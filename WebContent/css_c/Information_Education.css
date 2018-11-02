@@ -1,0 +1,71 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+p , ul, li, label{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#top{
+  width: auto;
+  height: 50px;
+  color:white;
+  background: #0c1931;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-size: 30pt;
+}
+
+#topmark{
+padding: 5px;
+font-size:0.7em;
+}
+
+#content{
+  width: auto;
+  height: auto;
+  background: #D5D5D5;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+#polaroid {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#container {
+
+  padding: 10px;
+  background-color: #f1eae3;
+}
+
+button{
+	font-size:1.2em;
+	padding:2%;
+	margin-top:2%;
+	border:none;
+	color:white;
+	background-color:#0c1931;
+	text-align:center;
+}
+hr{
+	border:none;
+	background-color:#f1eae3;
+	border-top:2px dashed #696969;
+}
+label{
+	font-weight:bold;
+	
+}
+
+#class_name1{
+	font-weight:bold;
+}
+#class_name2{
+	font-weight:bold;
+}
+#class_name3{
+	font-weight:bold;
+}
+
+

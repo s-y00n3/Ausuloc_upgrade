@@ -1,0 +1,38 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+p {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#top{
+  width: auto;
+  height: 70px;
+  background: #A6A6A6;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-size: 30pt;
+}
+
+#topmark{
+
+}
+
+#content{
+  width: auto;
+  height: auto;
+  background: #D5D5D5;
+  margin-bottom: 20px;
+  padding: 60px;
+}
+
+#polaroid {
+  background-color: white;
+  width: 78%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#container {
+  padding: 10px;
+  background-color: #D9E5FF;
+}

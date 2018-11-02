@@ -1,0 +1,94 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+p , ul, li, label{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#top{
+  width: auto;
+  height: 70px;
+  color:white;
+  background: #0c1931;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  font-size: 30pt;
+}
+
+#topmark{
+padding: 5px;
+}
+
+#content{
+  width: 90%;
+  height: 40%;
+  background: #0c1931;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+#polaroid {
+	border:1px;
+  width: 90%;
+  height:100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+#container {
+	color:#0c1931;
+	border:1px;
+  padding: 10px;
+  background-color: #f1eae3;
+}
+
+button{
+	padding:2%;
+	font-size:1.3em;
+	float:right;
+	border:none;
+	color:white;
+	background-color:#0c1931;
+	text-align:center;
+}
+hr{
+	border:none;
+	background-color:#f1eae3;
+	border-top:2px dashed #696969;
+}
+#btn{
+	width:20%;
+	clear:both;
+	margin-top:2%;
+	border:none;
+	color:white;
+	background-color:#0c1931;
+	text-align:center;
+}
+label{
+	float:left;
+	font-size:1.3em;
+}
+.right{
+	float:right;
+}
+input{
+	line-height:20%;
+}
+form{
+	color:#0c1931;
+	background-color:#f1eae3;
+	padding-top:2%;
+	padding-left:5%;
+	padding-right:5%;
+	padding-bottom:2%;
+}
+li{
+	margin-top:2%;
+	margin-bottom:5%;
+}
+#font{
+	color:#f1eae3;
+	font-color:#0c1931;
+	font-size:1.3em;
+}

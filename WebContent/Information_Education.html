@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<title></title>
+<link rel="stylesheet" href="css/reset.css">
+<!-- CSS reset -->
+<link rel="stylesheet" href="css/style.css">
+<!-- Resource style -->
+<link rel="stylesheet" type="text/css"
+	href="css_c/Information_Education.css">
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<link rel="stylesheet" href="menu.css">
+<script src="stayMenu.js"></script>
+<script src="menu.js"></script>
+
+
+<script>
+var config = {
+	    apiKey: "AIzaSyAWfSABXayq3I8UHsHPKdmSZxMPQBPXILw",
+	    authDomain: "ausuloc-1ef9b.firebaseapp.com",
+	    databaseURL: "https://ausuloc-1ef9b.firebaseio.com",
+	    projectId: "ausuloc-1ef9b",
+	    storageBucket: "ausuloc-1ef9b.appspot.com",
+	    messagingSenderId: "649273184955"
+	  };
+	  firebase.initializeApp(config);
+
+var database = firebase.database();
+var reviewRef = database.ref("class");
+var count;
+var i;
+reviewRef.on('value', function(snapshot) { // 아까 설정한 사용할 루트를 저장한 변수 reviewRef를 이용해
+  var result = snapshot.val(); //스냅샷을 찍어서 그 값을 result라는 변수에 저장(아까 설정한 루트 안에 있는 모든 값을 가져오는것임)
+  count = result.cnt; // 그 가져온 값들 중 cnt라는 값을 가져와서(실제 db에 있는 키값 이름으로 설정해주어야 함) count라는 변수에 저장
+
+  for (i = 1; i <= count; i++) {
+
+    var res = database.ref("class/" + i);
+    res.once('value', function(snapshot) {
+      var result = snapshot.val();
+      //  var date = result.date;
+      var name = result.name;
+      //    var teacher = (result.teacher)+"선생님";
+
+      //태그안 내용 바꾸기
+       document.getElementById("class_name"+i).innerHTML = result.name;
+       document.getElementById("class_intro"+i).innerHTML = result.introduce;
+       document.getElementById("class_date"+i).innerHTML = result.date;
+      console.log(i);
+
+    });
+
+  }
+
+
+});
+</script>
+</head>
+<body>
+<div class="title"><center><img src="ASL.png" width="20%"></center></div>
+	<div class="zeta-menu-bar">
+			<ul class="zeta-menu">
+				<li><a href="Au_main.jsp">Home</a></li>
+				<li><a href="#0">Desktop</a>
+					      <ul>
+        <li><a href="C_Bookmark.html">북마크 설정법</a></li>
+        <li><a href="C_Download.html">다운로드법</a></li>
+        <li><a href="C_History.html">사용 기록 확인법</a>
+        <li><a href="C_Secretmode.html">시크릿모드 사용법</a>
+        <li><a href="C_Smartkey.html">단축키 사용법</a>
+  	 	<li><a href="C_Blog.html">블로그 사용법</a>
+        <li><a href="C_Ppt.html">ppt 사용법</a>
+        <li><a href="C_Emailzip.html">이메일 전송법</a>
+        </li>
+      </ul>
+    </li>
+    
+    <li><a href="#0">Moblie</a>
+      <ul>
+        <li><a href="S_Bookmark.html">북마크 사용법</a></li>
+        <li><a href="S_Googlestore.html">구글 스토어 사용법</a></li>
+        <li><a href="S_Networkconn.html">네트워크 연결법</a></li>
+        <li><a href="S_Secretmode.html">시크릿모드 사용법</a></li>
+        <li><a href="S_Alram.html">알람 설정법</a></li>
+        <li><a href="S_Changediplay.html">배경화면 바꾸는법</a></li>
+        <li><a href="S_Fontsize.html">글자크기 조절법</a></li>
+      </ul></li>
+
+				<li><a href="#0">Education</a>
+					<ul>
+						<li><a href="Education_apply1.html">신청</a></li>
+						<li><a href="Information_Education.html">강좌</a></li>
+					</ul></li>
+
+				<li><a href="#0">Board</a>
+					<ul>
+						<li><a href="List.jsp">글 목록</a></li>
+        				<li><a href="Write.jsp">글 쓰기</a></li>
+					</ul></li>
+			</ul>
+	</div>
+	<div class="content">
+		<center>
+	<br>
+    <div id="top">
+      <p id="topmark">정보화 교육</p>
+    </div>
+
+    <div id="content" >
+      <div id="polaroid">
+      	
+        <div id="container">
+        <p class="title" id="class_name1"> </p>
+        <hr noshade="noshade">
+       <p id="class_intro1"></p><br>
+          <ul class="list">
+ 		  		 <li><label>교육대상 : </label> 어르신</li>
+ 				  <li><label>강좌분야 : </label>  IT관련</li>
+   				 <li><label>수강요일 :</label> <p id="class_date1"></p></li>
+   				 <li><label>교육장소 : </label> 미림여자정보과학고등학교</li>
+    			<li><button onclick="location.href = 'Education_apply1.html' ">수강 신청하기</button></li>
+  			</ul>
+        </div>
+      </div>
+      <br><br><br>
+
+      <div id="polaroid" >
+        <div id="container">
+          <p class="title" id="class_name2"></p>
+          <hr noshade="noshade">
+          <p id="class_intro2"></p>
+          <br>
+          <ul class="list">
+ 		  		 <li><label>교육대상 : </label> 어르신</li>
+ 				  <li><label>강좌분야 : </label>  IT관련</li>
+   				 <li><label>수강요일 :</label> <p id="class_date2"></p></li>
+   				 <li><label>교육장소 : </label> 미림여자정보과학고등학교</li>
+    			<li><button onclick="location.href = 'Education_apply1.html' ">수강 신청하기</button></li>
+  			</ul>
+        </div>
+      </div>
+      <br><br><br>
+		
+	<div id="polaroid" >
+      
+        <div id="container">
+          <p class="title" id="class_name3">SNS를 통해 소통하기</p>
+          <hr noshade="noshade">
+          <p id="class_intro3"></p>
+         	         <br>
+			<ul>
+			 <li>
+			  <li><label>교육대상 : </label> 어르신</li>
+ 				  <li><label>강좌분야 : </label>  IT관련</li>
+   				 <li><label>수강요일 :</label> <p id="class_date3"></p></li>
+   				 <li><label>교육장소 : </label> 미림여자정보과학고등학교</li>
+   				 
+    			<li><button onclick="location.href = 'Education_apply1.html' ">수강 신청하기</button></li>
+  			</ul>
+  		</div>
+        </div>
+      </div>
+      	<a href="Student_list.html"><img src="img/list.jpg" style="width:60%;"></a>
+      
+    </div>
+  </center>
+	</div>
+</body>
+</html>

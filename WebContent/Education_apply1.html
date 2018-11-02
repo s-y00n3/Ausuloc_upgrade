@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<title>수강 신청</title>
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<link rel="stylesheet" type="text/css" href="css_c/Education_apply.css">
+<link rel="stylesheet" href="menu.css">
+<script src="stayMenu.js"></script>
+<script src="menu.js"></script>
+
+
+<script>
+$(document).ready(function(){
+    $(function(){
+      $('#homeup').click(function(){
+        $('body,html').animate({
+          scrollTop:0
+        }, 800);
+        return false;
+      });
+      var scrollHeight = $(document).height();
+      $('#homedown').click(function(){
+        $('body, html').animate({
+          scrollTop:scrollHeight
+        }, 800);
+        return false;
+      });
+    });
+  });
+  
+	   var config = {
+	    	    apiKey: "AIzaSyAWfSABXayq3I8UHsHPKdmSZxMPQBPXILw",
+	    	    authDomain: "ausuloc-1ef9b.firebaseapp.com",
+	    	    databaseURL: "https://ausuloc-1ef9b.firebaseio.com",
+	    	    projectId: "ausuloc-1ef9b",
+	    	    storageBucket: "ausuloc-1ef9b.appspot.com",
+	    	    messagingSenderId: "649273184955"
+	    	  };
+	    	  firebase.initializeApp(config);
+	 
+	    	
+	    	  var class_option ;
+	     	 var option_value; 
+	     	 var _value = "";
+	     	  var i;
+	     	
+
+	     	
+	     	 
+	    	  for (i = 0; i < 3; i++) {
+	    	count = 1;
+	    	
+	 	    var database = firebase.database();
+	 	    var reviewRef = database.ref("student/" + "class1/"); //student/class1
+	 	    var review = database.ref("class/1"); //class/1
+	 	 	console.log("student _ reviewRef : "+reviewRef);
+	 		console.log("class _ review : "+review);
+	 	    var result;
+	 	    function apply() {
+	 	    	review.once('value', function(snapshot) {
+	 	        result = snapshot.val();
+	 	        console.log("result:"+result);
+	 	        console.log("count:"+count); //1
+	 	        reviewRef.once('value', function(snapshot) {
+	 	          result = snapshot.val();
+	 	          console.log("student reviewref : "+result);
+	 	          var cnt=result.cnt;
+	 	          console.log("student/class/:"+cnt);
+	 	          var stu_name = document.getElementById('name').value;
+	 	          var stu_phone = document.getElementById('phone1').value +"-"+document.getElementById('phone2').value+"-"+document.getElementById('phone3').value;
+	 	          var stu_birth = document.getElementById('birth').value;
+	 	          console.log(stu_phone);
+	 	           var newReviewRef = reviewRef.child(cnt).set({ // student/class+count/num 아래에 값 생성
+	 	            "stu_name": stu_name,
+	 	            "stu_phone": stu_phone,
+	 	            "stu_birth" : stu_birth
+	 	          }); //set
+	 	          cnt = cnt+1;
+	 	          console.log("+1: "+cnt);
+	 	          var total = review.update({
+	 	            "cnt": cnt
+	 	          }); //update
+	 	          var total_stu = reviewRef.update({
+	 	        	 "cnt": cnt
+	 	          }); //update
+	 	        });//reviewref 
+	 	       
+	 	       window.location.href="applyOK.html";
+	 	      });//review
+
+	 	    }//apply
+	   }//for
+	    	
+</script>
+</head>
+<body>
+	<div class="title">
+		<center>
+			<img src="ASL.png" width="20%">
+		</center>
+	</div>
+	<div class="zeta-menu-bar">
+		<center>
+			<ul class="zeta-menu">
+				<li><a href="Au_main.jsp">Home</a></li>
+				<li><a href="#0">Desktop</a>
+					<ul>
+						<li><a href="C_Bookmark.html">북마크 설정법</a></li>
+						<li><a href="C_Download.html">다운로드법</a></li>
+						<li><a href="C_History.html">사용 기록 확인법</a>
+						<li><a href="C_Secretmode.html">시크릿모드 사용법</a>
+						<li><a href="C_Smartkey.html">단축키 사용법</a>
+						<li><a href="C_Blog.html">블로그 사용법</a>
+						<li><a href="C_Ppt.html">ppt 사용법</a>
+						<li><a href="C_Emailzip.html">이메일 전송법</a></li>
+					</ul></li>
+
+				<li><a href="#0">Moblie</a>
+					<ul>
+						<li><a href="S_Bookmark.html">북마크 사용법</a></li>
+						<li><a href="S_Googlestore.html">구글 스토어 사용법</a></li>
+						<li><a href="S_Networkconn.html">네트워크 연결법</a></li>
+						<li><a href="S_Secretmode.html">시크릿모드 사용법</a></li>
+						<li><a href="S_Alram.html">알람 설정법</a></li>
+						<li><a href="S_Changediplay.html">배경화면 바꾸는법</a></li>
+						<li><a href="S_Fontsize.html">글자크기 조절법</a></li>
+					</ul></li>
+
+				<li><a href="#0">Education</a>
+					<ul>
+						<li><a href="Education_apply.html">신청</a></li>
+						<li><a href="Information_Education.html">강좌</a></li>
+					</ul></li>
+
+				<li><a href="#0">Board</a>
+					<ul>
+						<li><a href="List.jsp">글 목록</a></li>
+        				<li><a href="Write.jsp">글 쓰기</a></li>
+					</ul></li>
+			</ul>
+		</center>
+	</div>
+	<div class="content" style="background-color: #f2ece5;">
+		<center>
+			<div id="top">
+				<p id="topmark">수강 신청하기</p>
+			</div>
+
+			<br> <br> <br>
+			<div id="polaroid">
+				<div id="container">
+
+					<div class="container">
+
+						<div id="form">
+
+							<label for="country">수강할 강좌</label> <input type="text"
+								value="왕초보 탈출 한글(기초)" readonly>
+							<!-- <select name="class" id="class" class="right" onchange="change()" required>
+				     	<option>강좌를 선택해주세요.</option>
+				        <option value="1">왕초보 탈출 한글(기초)</option>
+		       			<option value="2">1인 방송국 만들기</option>
+		       			<option value="3">SNS를 통해 소통하기</option>
+				    </select> -->
+
+							<label for="fname">이름</label> <input type="text" id="name"
+								name="name" placeholder="이름을 입력하세요." required> <label
+								for="lname">생년월일</label> <input type="number" id="birth"
+								name="birth" placeholder="6자리로 기입해주세요." required> <label>전화번호</label><br>
+							<input type="number" name="phone" id="phone1" placeholder="1"
+								required /> <input type="number" name="phone" id="phone2"
+								placeholder="2" required /> <input type="number" name="phone"
+								id="phone3" placeholder="3" required />
+							<button onclick="apply();">신청하기</button>
+							<br>
+						</div>
+
+					</div>
+
+					<br>
+
+				</div>
+			</div>
+	</div>
+	</center>
+	</div>
+</body>
+</html>
